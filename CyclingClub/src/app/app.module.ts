@@ -17,7 +17,7 @@ import {LocationService} from './service/location.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AgmCoreModule.forRoot({apiKey: 'MAP'})
+    AgmCoreModule.forRoot()
   ],
   providers: [LocationService],
   bootstrap: [AppComponent]

@@ -6,12 +6,14 @@ export class LocationService {
   constructor() {
   }
 
-  getCurrentLocation(callback: (lat: number, lng: number) => void) {
+  getCurrentLocation() {
+    let result;
     navigator.geolocation.getCurrentPosition(function (loc) {
-        callback(loc.coords.latitude, loc.coords.longitude);
+      result = {lat: loc.coords.latitude, lng: loc.coords.longitude};
       }, function (error) {
         console.log(error);
       }
     );
+    return result;
   }
 }

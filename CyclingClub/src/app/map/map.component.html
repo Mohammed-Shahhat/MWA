@@ -1,9 +1,6 @@
 <sebm-google-map
   [latitude]="lat"
   [longitude]="lng"
-  [zoom]="zoom"
-  [disableDefaultUI]="false"
-  [zoomControl]="false"
   (mapClick)="mapClicked($event)">
 
   <sebm-google-map-marker
@@ -11,21 +8,12 @@
     (markerClick)="clickedMarker(loc.label, i)"
     [latitude]="loc.lat"
     [longitude]="loc.lng"
-    [label]="loc.label"
-    [markerDraggable]="loc.draggable"
-    (dragEnd)="markerDragEnd(loc, $event)">
+    [label]="loc.label">
 
     <sebm-google-map-info-window>
       <strong>InfoWindow content</strong>
     </sebm-google-map-info-window>
 
   </sebm-google-map-marker>
-
-  <sebm-google-map-circle [latitude]="lat + 0.3" [longitude]="lng"
-                          [radius]="5000"
-                          [fillColor]="'red'"
-                          [circleDraggable]="true"
-                          [editable]="true">
-  </sebm-google-map-circle>
 
 </sebm-google-map>

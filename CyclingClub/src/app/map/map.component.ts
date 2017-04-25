@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {LocationService} from '../service/location.service';
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-map',
@@ -7,9 +8,8 @@ import {LocationService} from '../service/location.service';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  lat = 51.673858;
-  lng = 7.815982;
-  @Input() mapCenter: { lat: number, lng: number };
+  lat: number;
+  lng: number;
   @Input() mapLocations: [MapLocation];
   @Output() mapLocationClicked = new EventEmitter();
 
@@ -17,18 +17,14 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (this.mapCenter) {
-    //   this.lat = this.mapCenter.lat;
-    //   this.lng = this.mapCenter.lng;
-    // } else if (this.mapLocations && this.mapLocations.length >= 1) {
-    //   this.lat = this.mapLocations[0].lat;
-    //   this.lng = this.mapLocations[0].lng;
-    // } else {
-    //   this.locationService.getCurrentLocation(function (lat, lng) {
-    //     this.lat = lat;
-    //     this.lng = lng;
-    //   });
-    // }
+    if (!isNullOrUndefined(this.mapLocations) && this.mapLocations.length >= 1) {
+      this.lat = this.mapLocations[0].lat;
+      this.lng = this.mapLocations[0].lng;
+    } else {
+      const currentLocation = this.locationService.getCurrentLocation();
+      this.lat = currentLocation.lat;
+      this.lng = currentLocation.lng;
+    }
   }
 
   clickedMarker(label: string, index: number) {
@@ -36,14 +32,12 @@ export class MapComponent implements OnInit {
   }
 
   mapClicked($event: any) {
+    console.log($event.coords.lat);
+    console.log($event.coords.lng);
     this.mapLocationClicked.emit({
       lat: $event.coords.lat,
       lng: $event.coords.lng
     });
-  }
-
-  markerDragEnd(loc: MapLocation, $event: MouseEvent) {
-    console.log('dragEnd', loc, $event);
   }
 }
 
