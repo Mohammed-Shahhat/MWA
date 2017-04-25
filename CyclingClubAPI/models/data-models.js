@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 
+var url ='mongodb://admin:admin@ds113841.mlab.com:13841/cycling_club';
+mongoose.connect(url);
+var db = mongoose.connection;
 
 var memberSchema = new mongoose.Schema({
     _id: {type: String},
@@ -42,7 +45,7 @@ var conversationSchema = new mongoose.Schema({
 
 var Events = mongoose.model('Events', eventSchema);
 
-var dataModel = {
+var dataModel = {dbConnection:  db,
     member: mongoose.model("member", memberSchema),
     club: mongoose.model("club", clubSchema),
     notification: mongoose.model("notification", notificationSchema),
