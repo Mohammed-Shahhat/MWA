@@ -7,13 +7,11 @@ export class LocationService {
   }
 
   getCurrentLocation(callback: (lat: number, lng: number) => void) {
-    geolocation
-      .getLocation()
-
-      .then(
-        function (data) {
-          callback(data.coords.latitude, data.coords.longitude);
-        }
-      );
+    navigator.geolocation.getCurrentPosition(function (loc) {
+        callback(loc.coords.latitude, loc.coords.longitude);
+      }, function (error) {
+        console.log(error);
+      }
+    );
   }
 }
