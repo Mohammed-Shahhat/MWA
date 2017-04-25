@@ -1,7 +1,7 @@
 var Member=(function()
 {var mongoose = require('mongoose');
 var dbModel=require('./data-models');
-var member=dbModel.members;
+var member=dbModel.member;
 
 var db=dbModel.dbConnection;
 var Add=function(obj){

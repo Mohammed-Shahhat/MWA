@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 var dbModel=require('./data-models');
-var event=require('./eventDAL');
-
 
 var db=dbModel.dbConnection;
 var events = dbModel.event;
