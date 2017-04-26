@@ -12,7 +12,7 @@ const cors = require('cors');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var clubs =require('./routes/clubs');
 
 var app = express();
 
@@ -46,7 +46,7 @@ const authCheck = jwt({
 
 app.use('/',authCheck, index);
 app.use('/users',authCheck, users);
-
+app.use('/clubs',clubs);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
