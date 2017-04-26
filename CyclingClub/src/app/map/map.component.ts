@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   lng: number;
   @Input() mapLocations: [MapLocation];
   @Output() mapLocationClicked = new EventEmitter();
+  @Output() markerClicked = new EventEmitter();
 
   constructor(private locationService: LocationService) {
   }
@@ -29,8 +30,9 @@ export class MapComponent implements OnInit {
     }
   }
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`);
+  clickedMarker(loc: MapLocation) {
+    console.log(`clicked the marker:` + loc.toString());
+    this.markerClicked.emit(loc);
   }
 
   mapClicked($event: any) {
