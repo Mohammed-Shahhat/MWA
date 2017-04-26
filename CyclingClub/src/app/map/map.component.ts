@@ -23,9 +23,12 @@ export class MapComponent implements OnInit {
       this.lat = this.mapLocations[0].lat;
       this.lng = this.mapLocations[0].lng;
     } else {
-      this.locationService.getCurrentLocation().subscribe(function (loc: { lat: number, lng: number }) {
-        this.lat = loc.lat;
-        this.lng = loc.lng;
+      this.locationService.getCurrentLocation().then(function (loc: { lat: number, lng: number }) {
+        console.log(loc.lat);
+        console.log(loc.lng);
+        // this.lat = loc.coords.latitude;
+        // this.lng = loc.coords.longitude;
+
       });
     }
   }
