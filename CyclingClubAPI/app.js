@@ -5,11 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
-var mongoose = require('mongoose');
 
-const jwt = require('express-jwt');
-const jwks = require('jwks-rsa');
-const cors = require('cors');
+//const jwt = require('express-jwt');
+//const jwks = require('jwks-rsa');
+//const cors = require('cors');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -29,25 +28,30 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+// app.use(cors());
 
 
-const authCheck = jwt({
-    secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: "https://amalsameh.auth0.com/.well-known/jwks.json"
-    }),
-    // This is the identifier we set when we created the API
-    audience: 'H0uSRbXXr_06okCHHT3RYDKCv8pSS5KW',
-    issuer: "https://amalsameh.auth0.com/",
-    algorithms: ['RS256']
-});
+// const authCheck = jwt({
+//     secret: jwks.expressJwtSecret({
+//         cache: true,
+//         rateLimit: true,
+//         jwksRequestsPerMinute: 5,
+//         jwksUri: "https://amalsameh.auth0.com/.well-known/jwks.json"
+//     }),
+//     // This is the identifier we set when we created the API
+//     audience: 'H0uSRbXXr_06okCHHT3RYDKCv8pSS5KW',
+//     issuer: "https://amalsameh.auth0.com/",
+//     algorithms: ['RS256']
+// });
+//
+// app.use('/', authCheck, index);
+// app.use('/users', authCheck, users);
+// app.use('/messages', authCheck, messaging);
 
-app.use('/', authCheck, index);
-app.use('/users', authCheck, users);
-app.use('/messages', authCheck, messaging);
+
+app.use('/messages', messaging);
+app.use('/', index);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
