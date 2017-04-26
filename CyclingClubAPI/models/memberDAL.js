@@ -15,7 +15,7 @@ return true;
 });
 };
 
-db.on('error',err=>{ console.error.bind(console, 'connection error:');
+db.on('error',err => { console.error.bind(console, 'connection error:');
 throw err;});
 
 return Add;

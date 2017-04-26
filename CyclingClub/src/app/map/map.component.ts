@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import {LocationService} from '../service/location.service';
 import {isNullOrUndefined} from "util";
 
@@ -21,9 +22,10 @@ export class MapComponent implements OnInit {
       this.lat = this.mapLocations[0].lat;
       this.lng = this.mapLocations[0].lng;
     } else {
-      const currentLocation = this.locationService.getCurrentLocation();
-      this.lat = currentLocation.lat;
-      this.lng = currentLocation.lng;
+      this.locationService.getCurrentLocation().subscribe(function (loc: { lat: number, lng: number }) {
+        this.lat = loc.lat;
+        this.lng = loc.lng;
+      });
     }
   }
 
