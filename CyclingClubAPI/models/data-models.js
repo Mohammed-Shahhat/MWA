@@ -49,7 +49,7 @@ var dataModel = {dbConnection:  db,
     member: mongoose.model("member", memberSchema),
     club: mongoose.model("club", clubSchema),
     notification: mongoose.model("notification", notificationSchema),
-    event: mongoose.model("event", eventSchema),
+    clubEvent: mongoose.model("event", eventSchema),
     conversation: mongoose.model("conversation", conversationSchema)
 };
 

@@ -1,0 +1,41 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+
+  <div class="form-group">
+    <label for="name">Club Name </label>
+    <input type="text" class="form-control" id="name" formControlName="name" placeholder="new club name">
+    <p class="text-danger" *ngIf="!myForm.controls['name'].valid && myForm.controls['name'].touched">
+      Required
+    </p>
+    <br>
+    <br>
+  </div>
+  <div class="form-group">
+    <label for="state">State</label>
+    <input type="text" class="form-control" id="state" formControlName="state" placeholder="select state">
+    <p class="text-danger" *ngIf="!myForm.controls['state'].valid && myForm.controls['state'].touched">
+      Required
+    </p>
+
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" class="form-control" id="city" formControlName="city" placeholder="select city">
+    <p class="text-danger" *ngIf="!myForm.controls['city'].valid && myForm.controls['city'].touched">
+      Required
+    </p>
+
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="post">Descreption</label>
+    <textarea id="post" class="form-control" formControlName="post"></textarea>
+    <p class="text-danger" *ngIf="!myForm.controls['post'].valid && myForm.controls['post'].touched">
+      Minimum length 10
+    </p>
+    <br>
+    <br>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+  <button class="btn btn-primary btn-large center" type="reset" ng-click="reset()">Reset</button>
+</form>
