@@ -68,9 +68,6 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(3000, function () {
-    var url = 'mongodb://admin:admin@ds113841.mlab.com:13841/cycling_club';
-    mongoose.connect(url);
-    global.db = mongoose.connection;
     console.log('listening on 3000')
 });
 module.exports = app;

@@ -39,7 +39,7 @@ var eventSchema = new mongoose.Schema({
 });
 
 var conversationSchema = new mongoose.Schema({
-    _id: {sender: String, receiver: String},
+    _id: {firstMember: String, secondMember: String},
     messages: [{sendDate: Date, sender: String, messageContent: String}]
 });
 

@@ -13,9 +13,10 @@ router.get('/messages', function (request, response, next) {
 });
 
 router.post('/messages', function (request, response, next) {
-    var convId = request.param('convId');
-    var msg = request.param('message');
-    messagingDataAccess.addMessage(convId, msg);
+
+    var body = request.body;
+    console.log(body);
+    messagingDataAccess.addMessage(body.senderId, body.senderName, body.receiverId, body.message);
 });
 
 module.exports = router;

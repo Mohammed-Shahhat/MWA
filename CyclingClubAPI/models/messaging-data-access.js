@@ -14,18 +14,32 @@ var createConversation = function (conversation) {
     });
 };
 
-var addMessage = function (senderId, receiverId,senderName, msgString) {
-    dataModel.conversation.findById(conversationId, function (err, conv) {
+var addMessage = function (senderId, senderName, receiverId, msgString) {
+    dataModel.conversation.findById({
+        firstMember: senderId,
+        secondMember: receiverId
+    }, function (err, conv) {
         if (err) throw err;
         var msg;
         msg.sendDate = new Date();
+        msg.sender = senderName;
         msg.messageContent = msgString;
-        if(con.isNullOrUndefined()){
-            conv = new dataModel.conversation();
-            conv.id = conversationId;
+        var result = conv;
+        if (result.isNullOrUndefined()) {
+            dataModel.conversation.findById({
+                firstMember: receiverId,
+                secondMember: senderId
+            }, function (err, conv) {
+                if (err) throw err;
+                result = conv;
+                if (result.isNullOrUndefined()) {
+                    conv = new dataModel.conversation();
+                    conv.id = conversationId;
+                }
+            });
         }
-        conv.messages.push(msg);
-        conv.save(function (err) {
+        result.messages.push(msg);
+        result.save(function (err) {
             if (err) throw err;
             console.log('Conversation successfully updated.');
         })
@@ -45,5 +59,9 @@ var getConversationById = function (conversationId) {
 
 };
 
-messagingDataAccess = {createConversation: createConversation,addMessage: addMessage,getConversationById: getConversationById};
+messagingDataAccess = {
+    createConversation: createConversation,
+    addMessage: addMessage,
+    getConversationById: getConversationById
+};
 module.exports = messagingDataAccess;
