@@ -9,7 +9,9 @@ var memberSchema = new mongoose.Schema({
     name: {type: String},
     picture: {type: String},
     city: {type: String},
-    state: {type: String}
+    state: {type: String},
+    clubs: [{club: String}],
+    events: [{event: {owner: String, dueDate: Date}}]
 });
 
 var clubSchema = new mongoose.Schema({
@@ -17,12 +19,13 @@ var clubSchema = new mongoose.Schema({
     city: {type: String},
     state: {type: String},
     picture: {type: String},
-    members: [memberSchema],
+    members: [{memberId: String, memberName: String}],
     location: {long: Number, lat: Number}
 });
 
 var notificationSchema = new mongoose.Schema({
     text: {type: String},
+    sender: {senderId: String, senderName: String},
     status: {type: Boolean},
 });
 

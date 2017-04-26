@@ -60,8 +60,8 @@
       <file leaf-file-name="data-models.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/data-models.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="52" />
+            <state relative-caret-position="148">
+              <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -125,10 +125,10 @@
         <option value="$PROJECT_DIR$/models/eventDAL.js" />
         <option value="$PROJECT_DIR$/models/memberDAL.js" />
         <option value="$PROJECT_DIR$/models/data-interfaces.js" />
-        <option value="$PROJECT_DIR$/models/data-models.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/models/messaging-data-access.js" />
         <option value="$PROJECT_DIR$/routes/messaging.js" />
+        <option value="$PROJECT_DIR$/models/data-models.js" />
       </list>
     </option>
   </component>
@@ -144,7 +144,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
+    <option name="x" value="-5" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="857" />
@@ -336,15 +336,15 @@
       <option name="presentableId" value="Default" />
       <updated>1493072574574</updated>
       <workItem from="1493072575710" duration="3043000" />
-      <workItem from="1493135874399" duration="24130000" />
+      <workItem from="1493135874399" duration="24504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27173000" />
+    <option name="totallyTimeSpent" value="27547000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="23" width="1440" height="857" extended-state="0" />
+    <frame x="-5" y="23" width="1440" height="857" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21000704" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -529,8 +529,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/data-models.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="52" />
+        <state relative-caret-position="148">
+          <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
           <folding />
         </state>
       </provider>
