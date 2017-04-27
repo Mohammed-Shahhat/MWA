@@ -27,6 +27,7 @@ import {AboutUsComponent} from './about-us.component';
 import {HomeComponent} from './home.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     Error404Component,
     AddclubComponent,
     AboutUsComponent,
-    HomeComponent
+    HomeComponent,
+    ChatComponent
 
   ],
   imports: [
