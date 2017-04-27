@@ -9,7 +9,7 @@ export class LocationService {
   getCurrentLocation() {
     let result;
     navigator.geolocation.getCurrentPosition(function (loc) {
-      result = {lat: loc.coords.latitude, lng: loc.coords.longitude};
+        result = {lat: loc.coords.latitude, lng: loc.coords.longitude};
       }, function (error) {
         console.log(error);
       }

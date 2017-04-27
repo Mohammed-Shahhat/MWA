@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import {LocationService} from '../service/location.service';
 import {isNullOrUndefined} from "util";
 
@@ -12,6 +13,7 @@ export class MapComponent implements OnInit {
   lng: number;
   @Input() mapLocations: [MapLocation];
   @Output() mapLocationClicked = new EventEmitter();
+  @Output() markerClicked = new EventEmitter();
 
   constructor(private locationService: LocationService) {
   }
@@ -21,14 +23,16 @@ export class MapComponent implements OnInit {
       this.lat = this.mapLocations[0].lat;
       this.lng = this.mapLocations[0].lng;
     } else {
-      const currentLocation = this.locationService.getCurrentLocation();
-      this.lat = currentLocation.lat;
-      this.lng = currentLocation.lng;
+      this.locationService.getCurrentLocation().subscribe(function (loc: { lat: number, lng: number }) {
+        this.lat = loc.lat;
+        this.lng = loc.lng;
+      });
     }
   }
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`);
+  clickedMarker(loc: MapLocation) {
+    console.log(`clicked the marker:` + loc.toString());
+    this.markerClicked.emit(loc);
   }
 
   mapClicked($event: any) {
