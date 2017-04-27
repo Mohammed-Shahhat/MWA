@@ -9,10 +9,21 @@ export class MessagingDataService {
   }
 
   getConversation(sender: String, receiver: String) {
-return this.http.get();
+    const url = 'http://localhost:3000/messages?sender=' + sender + '&receiver=' + receiver;
+    const myHeaders = new Headers();
+    myHeaders.append('X-Requested-With', 'Anguler');
+    return this.http.get(url, {headers: myHeaders});
   }
 
-  addMessage(senderId: String, senderName: String, receiverId: String, message: String) {
 
+  addMessage(senderId: String, senderName: String, receiverId: String, message: String) {
+    const url = 'http://localhost:3000/messages';
+    const body = {
+      senderId: senderId,
+      senderName: senderName,
+      receiverId: receiverId,
+      message: message
+    };
+    this.http.post(url, body);
   }
 }

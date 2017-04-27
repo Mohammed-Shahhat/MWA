@@ -9,7 +9,7 @@ var router = express.Router();
 router.get('/', function (request, response, next) {
     var sender = request.param('sender');
     var receiver = request.param('receiver');
-    messagingDataAccess.getConversationById(sender,receiver).then(function (data) {
+    messagingDataAccess.getConversationById(sender, receiver).then(function (data) {
         response.send(data);
     })
 });

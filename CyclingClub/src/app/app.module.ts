@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {HttpModule} from '@angular/http';
 
-
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {MapComponent} from './map/map.component';
 
@@ -27,7 +26,11 @@ import {AboutUsComponent} from './about-us.component';
 import {HomeComponent} from './home.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ChatComponent } from './chat/chat.component';
+import {ChatComponent} from './chat/chat.component';
+
+import {OrderListModule} from 'primeng/primeng';
+import {MessagingDataService} from './service/messaging-data.service';
+import {InputTextModule} from 'primeng/primeng';
 
 
 @NgModule({
@@ -55,9 +58,11 @@ import { ChatComponent } from './chat/chat.component';
     HttpModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    OrderListModule,
+    InputTextModule,
     myRoutes
   ],
-  providers: [LocationService, ProfileGuard, LocationService, FormserviceService],
+  providers: [LocationService, ProfileGuard, LocationService, FormserviceService, MessagingDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
