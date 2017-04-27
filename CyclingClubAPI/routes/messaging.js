@@ -14,6 +14,7 @@ router.get('/', function (request, response, next) {
     })
 });
 
+
 router.post('/', function (request, response, next) {
     var reqBody = request.body;
     messagingDataAccess.addMessage(reqBody.senderId, reqBody.senderName, reqBody.receiverId, reqBody.message);
