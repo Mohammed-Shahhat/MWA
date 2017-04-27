@@ -7,13 +7,15 @@ export class LocationService {
   }
 
   getCurrentLocation() {
-    let result;
-    navigator.geolocation.getCurrentPosition(function (loc) {
-        result = {lat: loc.coords.latitude, lng: loc.coords.longitude};
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(function (loc) {
+        console.log(loc.coords.latitude);
+        console.log(loc.coords.longitude);
+        resolve({lat: loc.coords.latitude, lng: loc.coords.longitude});
       }, function (error) {
         console.log(error);
-      }
-    );
-    return result;
+        reject('The service is not working');
+      });
+    });
   }
 }
