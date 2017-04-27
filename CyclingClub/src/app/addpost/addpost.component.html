@@ -1,0 +1,15 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+
+  <br>
+  <div class="form-group">
+    <label for="post">Announcement</label>
+    <textarea id="post" class="form-control" formControlName="post"></textarea>
+    <p class="text-danger" *ngIf="!myForm.controls['post'].valid && myForm.controls['post'].touched">
+      Maximum length 100
+    </p>
+    <br>
+    <br>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+  <button class="btn btn-primary btn-large center" type="reset" ng-click="reset()">Reset</button>
+</form>
